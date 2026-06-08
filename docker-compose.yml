@@ -1,0 +1,21 @@
+services:
+  docker-115:
+    image: docker-115:36.0.0
+    platform: linux/amd64
+    build:
+      context: .
+    container_name: docker-115
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      - LC_ALL=zh_CN.UTF-8
+    ports:
+      - "3389:3389"
+    volumes:
+      - ./config:/config
+      - ./downloads:/downloads
+    security_opt:
+      - seccomp:unconfined
+    shm_size: "1gb"
+    restart: unless-stopped
