@@ -6,10 +6,10 @@ services:
       context: .
     container_name: docker-115
     environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Asia/Shanghai
-      - LC_ALL=zh_CN.UTF-8
+      - PUID=${PUID:-1000}
+      - PGID=${PGID:-1000}
+      - TZ=${TZ:-Asia/Shanghai}
+      - LC_ALL=${DOCKER_115_LC_ALL:-zh_CN.UTF-8}
       - RDP_USER=${RDP_USER:-abc}
       - RDP_PASSWORD=${RDP_PASSWORD:-abc}
     ports:

@@ -55,11 +55,10 @@ environment:
   - RDP_PASSWORD=your-password
 ```
 
-也可以在项目目录创建 `.env` 文件覆盖默认值：
+也可以从 `.env.example` 复制一份 `.env`，再按需修改：
 
-```env
-RDP_USER=user115
-RDP_PASSWORD=change-me
+```bash
+cp .env.example .env
 ```
 
 修改后重建并重启容器：
