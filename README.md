@@ -38,6 +38,36 @@ localhost:3389
 
 这样下载文件会出现在宿主机的 `./downloads` 目录中。115 的登录态和配置会保存在宿主机的 `./config` 目录中。
 
+## RDP 登录账号和密码
+
+默认 RDP 登录信息为：
+
+```text
+用户名：abc
+密码：abc
+```
+
+可以在 `docker-compose.yml` 中修改：
+
+```yaml
+environment:
+  - RDP_USER=abc
+  - RDP_PASSWORD=your-password
+```
+
+也可以在项目目录创建 `.env` 文件覆盖默认值：
+
+```env
+RDP_USER=user115
+RDP_PASSWORD=change-me
+```
+
+修改后重建并重启容器：
+
+```bash
+docker compose up -d --build
+```
+
 ## docker-compose.yml 说明
 
 默认 compose 配置会：
@@ -47,6 +77,7 @@ localhost:3389
 - 映射 `./config:/config`。
 - 映射 `./downloads:/downloads`。
 - 设置 `LC_ALL=zh_CN.UTF-8`。
+- 设置 `RDP_USER` 和 `RDP_PASSWORD`，用于配置 RDP 登录账号和密码。
 - 设置 `security_opt: seccomp:unconfined`，提高 Chromium/Electron 类桌面程序在容器内启动的兼容性。
 - 设置 `shm_size: 1gb`，避免默认共享内存过小导致客户端异常。
 
