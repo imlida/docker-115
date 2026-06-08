@@ -10,6 +10,8 @@ services:
       - PGID=1000
       - TZ=Asia/Shanghai
       - LC_ALL=zh_CN.UTF-8
+      - RDP_USER=${RDP_USER:-abc}
+      - RDP_PASSWORD=${RDP_PASSWORD:-abc}
     ports:
       - "3389:3389"
     volumes:
